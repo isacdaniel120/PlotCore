@@ -1,0 +1,33 @@
+name: PlotCore
+version: '2.0.0'
+main: me.plotcore.PlotCore
+api-version: '1.21'
+description: Advanced Rentable Plots
+authors: [PlotCore]
+softdepend: [WorldGuard, WorldEdit]
+
+commands:
+  plot:
+    description: PlotCore main command
+    usage: /plot <subcommand>
+    aliases: [plots, p]
+
+permissions:
+  plotcore.admin:
+    description: Full admin access
+    default: op
+  plotcore.use:
+    description: Basic plot usage (rent, trust, info, menu)
+    default: true
+  plotcore.bypass:
+    description: Bypass plot protection
+    default: op
+  plotcore.create:
+    description: Create and delete plots
+    default: op
+  plotcore.evict:
+    description: Evict players from plots
+    default: op
+  plotcore.reload:
+    description: Reload plugin
+    default: op

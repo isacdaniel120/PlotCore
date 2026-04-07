@@ -1,0 +1,67 @@
+# JPlots Configuration
+
+settings:
+  # Default rental duration in seconds (86400 = 1 day)
+  default-duration: 86400
+  # Default rent price
+  default-price: 100
+  # Check expired plots every X seconds
+  expiry-check-interval: 60
+  # Max trusted players per plot
+  max-trusted: 4
+  # One plot per player (true = player can only rent 1 plot at a time)
+  one-plot-per-player: true
+  # Material used as the auto-created sign when a plot is made
+  sign-material: OAK_SIGN
+
+# Currency item (set via /plot currencyset)
+currency:
+  material: EMERALD
+  name: "&aPlot Token"
+  lore:
+    - "&7Used to rent plots"
+  custom-model-data: 0
+
+# Protection settings
+protection:
+  prevent-build: true
+  prevent-break: true
+  prevent-interact: true
+  prevent-containers: true
+  # Also protect unrented plots from outsiders
+  protect-unrented: true
+
+messages:
+  prefix: "&8[&aJPlots&8] &r"
+  no-permission: "&cYou don't have permission!"
+  plot-created: "&aPlot &e{name} &acreated! A sign has been placed at your location."
+  plot-deleted: "&aPlot &e{name} &adeleted."
+  plot-rented: "&aYou rented &e{name} &afor &e{time}&a!"
+  plot-expired: "&cYour rental on plot &e{name} &chas expired!"
+  plot-evicted: "&cYou were evicted from plot &e{name}&c!"
+  player-evicted: "&aEvicted from plot &e{name}&a."
+  not-enough-currency: "&cNot enough currency! Need &e{amount}&c."
+  plot-not-found: "&cPlot &e{name} &cnot found!"
+  plot-already-rented: "&cThis plot is already rented by &e{player}&c!"
+  selection-incomplete: "&cSelect both corners with the wand first!"
+  selection-overlap: "&cThis selection overlaps an existing plot!"
+  wand-given: "&aWand given! Left-click = Corner 1 | Right-click = Corner 2"
+  trust-added: "&aAdded &e{player} &ato trusted on &e{name}&a."
+  trust-removed: "&aRemoved &e{player} &afrom trusted on &e{name}&a."
+  trust-not-found: "&e{player} &cis not trusted here."
+  trust-already: "&e{player} &eis already trusted here."
+  trust-max: "&cMax trusted players reached! (&e{max}&c)"
+  time-updated: "&aTime updated on &e{name}&a."
+  bypass-on: "&aBypass &2ON &a- protection ignored."
+  bypass-off: "&cBypass &4OFF &c- protection active."
+  sign-set: "&aSign linked to plot &e{name}&a."
+  currency-set: "&aCurrency set to &e{item}&a!"
+  currency-given: "&aGiven &e{amount}x &acurrency."
+  config-reloaded: "&aReloaded!"
+  must-be-player: "&cOnly players can use this."
+  invalid-time: "&cInvalid time! Use: 1d, 12h, 30m, 1d12h30m"
+  invalid-number: "&cInvalid number."
+  plot-disbanded: "&aYou disbanded plot &e{name}&a. Rental ended."
+  already-renting: "&cYou are already renting a plot! Use /plot menu to manage it."
+  not-your-plot: "&cThis plot belongs to someone else."
+  no-plots: "&cNo plots available."
