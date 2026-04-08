@@ -7,24 +7,36 @@ import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.block.Sign;
 import org.bukkit.block.sign.Side;
 
 public class SignManager {
 
     public static Location placeSign(Plot plot, Location base, Material signMaterial) {
-        Location signLoc = base.clone().add(0, 1, 0);
+        Location signLoc = base.clone();
+        signLoc.setY(Math.floor(base.getY()));
         Block block = signLoc.getBlock();
 
-        if (!block.isEmpty() && !block.isLiquid()) {
-            signLoc = base.clone().add(0, 2, 0);
-            block = signLoc.getBlock();
-        }
-
-        if (!block.isEmpty()) return null;
+        if (!block.isEmpty() && !block.isLiquid()) return null;
 
         Material mat = signMaterial != null ? signMaterial : Material.OAK_SIGN;
         block.setType(mat);
+
+        if (block.getBlockData() instanceof org.bukkit.block.data.Rotatable rotatable) {
+            float yaw = base.getYaw();
+            if (yaw < 0) yaw += 360;
+            int rotation = (int) Math.round(yaw / 22.5f) % 16;
+            BlockFace[] faces = {
+                BlockFace.SOUTH, BlockFace.SOUTH_SOUTH_WEST, BlockFace.SOUTH_WEST, BlockFace.WEST_SOUTH_WEST,
+                BlockFace.WEST, BlockFace.WEST_NORTH_WEST, BlockFace.NORTH_WEST, BlockFace.NORTH_NORTH_WEST,
+                BlockFace.NORTH, BlockFace.NORTH_NORTH_EAST, BlockFace.NORTH_EAST, BlockFace.EAST_NORTH_EAST,
+                BlockFace.EAST, BlockFace.EAST_SOUTH_EAST, BlockFace.SOUTH_EAST, BlockFace.SOUTH_SOUTH_EAST
+            };
+            rotatable.setRotation(faces[rotation]);
+            block.setBlockData(rotatable);
+        }
+
         updateSign(block, plot);
         return signLoc;
     }
